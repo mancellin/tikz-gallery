@@ -1,0 +1,27 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Thick interface (microscopic model)  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pgfmathsetmacro{\Minval}{0.1}%
+\pgfmathsetmacro{\Maxval}{1.2}%
+\pgfmathsetmacro{\Thickness}{0.3}%
+\pgfmathsetmacro{\Midval}{(\Minval + \Maxval)/2}%
+
+% Axes
+\draw[-latex] (-0.1, 0) -- (2.1, 0) node[right] {$x$};
+\draw[-latex] (0.0, -0.1) -- (0.0, \Maxval+0.1) node[above] {$\rho$};
+
+% Profile
+\draw[] (0, \Minval) 
+        -- (1.0-\Thickness, \Minval)
+        cos (1.0, \Midval)
+        sin (1.0+\Thickness, \Maxval)
+        -- (2.0, \Maxval);
+
+% Legend
+\node[anchor=center] at (0.4, \Midval) {Gas};
+\node[anchor=center] at (1.6, \Midval) {Liquid};
+\draw[<->] (1.0-\Thickness, \Maxval+0.1)
+           -- node[above, midway] {$\varepsilon$} (1.0+\Thickness, \Maxval+0.1);
+
+% Title
+\node[below] at (1.0, -0.1) {Thick interface};

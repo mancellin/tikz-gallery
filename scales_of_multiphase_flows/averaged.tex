@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%
+%  Averaged field  %
+%%%%%%%%%%%%%%%%%%%%
+\pgfmathsetmacro{\Minval}{0.1}%
+\pgfmathsetmacro{\Maxval}{1.2}%
+\pgfmathsetmacro{\Midval}{(\Minval + \Maxval)/2}%
+
+% Axes
+\draw[-latex] (-0.1, 0) -- (2.1, 0) node[right] {$x$};
+\draw[-latex] (0.0, -0.1) -- (0.0, \Maxval+0.1) node[above] {$\rho$};
+
+% Profile
+\pgfmathsetmacro{\x}{0.1}%
+\foreach \w in {0.0, 0.1, 0.1, 0.2, 0.4, 0.1, 0.1}
+{
+  \draw[black!30] (\x, \Minval) -- (\x, \Maxval) -- (\x+\w, \Maxval) -- (\x+\w, \Minval) -- (\x+2*\w, \Minval);
+
+  \pgfmathsetmacro{\tmp}{\x+2*\w};
+  \global\let\x\tmp;
+};
+\draw plot[smooth, tension=1] coordinates{
+  (0.00, \Midval)
+  (0.50, \Midval+0.0)
+  (1.15, \Midval+0.2)
+  (1.50, \Midval-0.2)
+  (2.00, \Midval)
+};
+
+% Legend
+\node[below] at (1, -0.1) {Averaged field};
