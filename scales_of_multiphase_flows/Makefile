@@ -1,4 +1,4 @@
-scales_of_multiphase_flows.pdf: main.tex microscopic.tex macroscopic.tex averaged.tex
+scales_of_multiphase_flows.pdf: main.tex
 	latexmk -pdf -quiet $<
 	mv $(basename $<).pdf $@
 	latexmk -c

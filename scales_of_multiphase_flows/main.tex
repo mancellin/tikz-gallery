@@ -1,6 +1,7 @@
 \documentclass[]{beamer}
 
 \usepackage{tikz}
+\usetikzlibrary{arrows}
 
 \begin{document}
 \begin{frame}{Scales of multiphase flows}
@@ -18,18 +19,22 @@
     \node[right, align=left] at (0.0, 0.0) {Microscopic};
     \node[left, align=right] at (0.98, 0.0) {Macroscopic};
 
+
     \begin{scope}[shift={(0, 0.15)}, scale=0.1, anchor=south]
-      \input{microscopic.tex}
+      \input{1D_microscopic.tex}
     \end{scope}
 
     \begin{scope}[shift={(0.35, 0.15)}, scale=0.1, anchor=south]
-      \input{macroscopic.tex}
+      \input{1D_macroscopic.tex}
+    \end{scope}
+
+    \begin{scope}[shift={(0.35, -0.30)}, scale=0.1, anchor=north]
+      \input{2D_macroscopic.tex}
     \end{scope}
 
     \begin{scope}[shift={(0.7, 0.15)}, scale=0.1, anchor=south]
-      \input{averaged.tex}
+      \input{1D_averaged.tex}
     \end{scope}
-
 
   \end{tikzpicture}
 \end{frame}
