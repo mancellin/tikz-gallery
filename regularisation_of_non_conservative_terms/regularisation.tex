@@ -1,0 +1,81 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+\begin{tikzpicture}[x=2cm, y=2cm]
+  \definecolor{bleu}{rgb}{0.121569, 0.25098, 0.478431} % Pantone 287
+  \definecolor{rouge}{rgb}{0.752941, 0.0, 0.0}         % Pantone 186
+
+  %% TOP DIAGRAM
+  \begin{scope}[shift={(0, +1)}]
+    % Axe
+    \draw[->, >=latex] (-1, 0) -- (1, 0) node[right] {$x$};
+
+    % Curves
+    \draw[bleu] (-0.9, 0.1) node[left, bleu] {$\rho_g$} -- (0.0, 0.1);
+    \draw[bleu] (0, 1.0) -- (0.9, 1.0) node[right, bleu] {$\rho_l$};
+    \draw[rouge] (-0.9, 0.8) node[left, rouge] {$T_g$} -- (-0.0, 0.8);
+    \draw[rouge] (0, 0.2) -- (0.9, 0.2) node[right, rouge] {$T_l$};
+
+    % Interface
+    \draw[dashed] (0, 0) -- (0, 1.1);
+
+    % Legend
+    \node[below] at (0, 0) {\small Discontinuity at a sharp interface};
+  \end{scope}
+
+  %% BOTTOM LEFT DIAGRAM
+  \begin{scope}[shift={(-1.5, -1)}]
+    % Axe
+    \draw[->, >=latex] (-1, 0) -- (1, 0) node[right] {$x$};
+
+    % Courbes
+    \draw[bleu] 
+      (-0.9, 0.1)
+      node[left, bleu] {$\rho_g$}
+      -- (-0.4, 0.1) cos (-0.2, 0.55) sin (0.0, 1.0) -- (0.9, 1.0)
+      node[right, bleu] {$\rho_l$};
+    \draw[rouge] 
+      (-0.9, 0.8) 
+      node[left, rouge] {$T_g$}
+      -- (0.0, 0.8) cos (0.2, 0.5) sin (0.4, 0.2) -- (0.9, 0.2) 
+      node[right, rouge] {$T_l$};
+
+    % Interface
+    \draw[<->] (-0.4, 1.1) -- node[above, midway] {$\varepsilon$} (0.4, 1.1);
+    \draw[dashed] (-0.4, 0) -- (-0.4, 1.2);
+    \draw[dashed] (0.4, 0) -- (0.4, 1.2);
+
+    % Legend
+    \node[below] at (0, 0) {\small A regularisation of the interface};
+  \end{scope}
+
+  %% BOTTOM RIGHT DIAGRAM
+  \begin{scope}[shift={(1.5, -1)}]
+    % Axe
+    \draw[->, >=latex] (-1, 0) -- (1, 0) node[right] {$x$};
+
+    % Courbes
+    \draw[bleu]
+      (-0.9, 0.1)
+      node[left, bleu] {$\rho_g$}
+      -- (0.0, 0.1) cos (0.2, 0.55) sin (0.4, 1.0) -- (0.9, 1.0)
+      node[right, bleu] {$\rho_l$};
+    \draw[rouge]
+      (-0.9, 0.8)
+      node[left, rouge] {$T_g$}
+      -- (-0.4, 0.8) cos (-0.2, 0.5) sin (0.0, 0.2) -- (0.9, 0.2)
+      node[right, rouge] {$T_l$};
+
+    % Interface
+    \draw[<->] (-0.4, 1.1) -- node[above, midway] {$\varepsilon$} (0.4, 1.1);
+    \draw[dashed] (-0.4, 0) -- (-0.4, 1.2);
+    \draw[dashed] (0.4, 0) -- (0.4, 1.2);
+
+    % Legend
+    \node[below] at (0, 0) {\small Another regularisation of the interface};
+  \end{scope}
+
+\end{tikzpicture}
+\end{document}
