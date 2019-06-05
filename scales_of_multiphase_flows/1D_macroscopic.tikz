@@ -1,0 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%
+%  Macroscopic scale %
+%%%%%%%%%%%%%%%%%%%%%%
+\pgfmathsetmacro{\Minval}{0.1}%
+\pgfmathsetmacro{\Maxval}{1.2}%
+\pgfmathsetmacro{\Midval}{(\Minval + \Maxval)/2}%
+
+% Axe
+\draw[-latex] (-0.1, 0) -- (2.1, 0) node[right] {$x$};
+\draw[-latex] (0.0, -0.1) -- (0.0, \Maxval+0.1) node[above] {$\rho$};
+
+% Profil
+\draw (0, \Minval) -- (1, \Minval);
+\draw[dashed] (1, \Minval) -- (1, \Maxval);
+\draw (1, \Maxval) -- (2, \Maxval);
+
+% Legend
+\node[anchor=center] at (0.4, 0.5) {Gas};
+\node[anchor=center] at (1.6, 0.5) {Liquid};
+\node[below] at (1, -0.1) {Sharp interface};

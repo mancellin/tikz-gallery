@@ -1,5 +1,6 @@
-scales_of_multiphase_flows.pdf: main.tex
+scales_of_multiphase_flows.pdf: scales_of_multiphase_flows.tex
 	latexmk -pdf -quiet $<
-	mv $(basename $<).pdf $@
+
+clean:
 	latexmk -c
 	rm *.nav *.snm
