@@ -1,0 +1,28 @@
+\pgfmathsetmacro{\radius}{0.2}
+\pgfmathsetmacro{\length}{10.0}
+\pgfmathsetmacro{\depth}{-0.3}
+\pgfmathsetmacro{\amplitude}{0.15}
+
+% FREE SURFACE
+\draw (-2, 0) -- ++(\length+4, 0);
+
+% ARROWS
+\draw[<->=latex] (0, \depth-\radius-0.1) -- node[below] {\footnotesize 10 m} ++ (\length,0);
+\draw[<->=latex] (0-0.5, \depth-\radius) -- node[left] {\footnotesize 0.4 m} ++ (0,2*\radius);
+\draw[<->=latex] (\length+0.8, 0.0) -- node[right] {\footnotesize 0.3 m} ++ (0,\depth);
+
+% SIDE OF THE CYLINDER
+\draw (0, \depth) circle ({\radius} and \radius);  % Left circle
+\draw (\length,\depth-\radius) arc (-90:90:{\radius} and {\radius});  % Front of right circle
+\draw[densely dashed] (\length,\depth+\radius) arc (90:270:{\radius} and {\radius});  % Back of right circle
+
+% FLAT CYLINDER
+\draw (0,\depth+\radius) -- ++(\length,0);  % Top side
+\draw (0,\depth-\radius) -- ++(\length,0);  % Bottom side
+
+% MODE 1
+% \node[anchor=east] at (-0.5, \depth) {\small $\sin\left( 1 \times 2\pi x/L\right)$};
+\draw (0,\depth+\radius) 
+  sin ++ ({\length/4},0.5*\amplitude) cos ++ ({\length/4},-0.5*\amplitude) sin ++ ({\length/4},-0.5*\amplitude) cos ++ ({\length/4},0.5*\amplitude);  % Top side
+\draw (0,\depth-\radius) 
+  sin ++ ({\length/4},-0.5*\amplitude) cos ++ ({\length/4},0.5*\amplitude) sin ++ ({\length/4},0.5*\amplitude) cos ++ ({\length/4},-0.5*\amplitude);

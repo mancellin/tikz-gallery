@@ -1,0 +1,49 @@
+\pgfmathsetmacro{\radius}{0.2}
+\pgfmathsetmacro{\length}{5.0}
+\pgfmathsetmacro{\amplitude}{0.15}
+\pgfmathsetmacro{\epsilon}{0.02}
+
+\begin{scope}[shift={(-4,0)}]
+\draw ({-\length/2}, \radius) -- ({-\length/2}, -\radius);
+\draw ({\length/2},  \radius) -- ({\length/2}, -\radius);
+\foreach \i in {-2,...,3} {
+  \draw ({\i*\length/4-\length/16},-3) -- ++(0, 6);
+}
+\foreach \i in {-2,...,2} {
+  \draw[<->] ({\i*\length/4-\length/16+\epsilon},-2) -- node[below] {$\lambda$} ++(\length/4-2*\epsilon, 0);
+}
+
+\draw ({-\length/2},\radius) 
+  sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude) sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude)
+  sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude) sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude)
+  sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude) sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude)
+  sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude) sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude)
+  ;
+\draw ({-\length/2},-\radius) 
+  sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude) sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude)
+  sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude) sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude)
+  sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude) sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude)
+  sin ++ ({\length/16},-0.5*\amplitude) cos ++ ({\length/16},0.5*\amplitude) sin ++ ({\length/16},0.5*\amplitude) cos ++ ({\length/16},-0.5*\amplitude)
+  ;
+\end{scope}
+
+\begin{scope}[shift={(4,0)}]
+\draw ({-\length/2}, \radius) -- ({-\length/2}, -\radius);
+\draw ({\length/2},  \radius) -- ({\length/2}, -\radius);
+\foreach \i in {-1,...,2} {
+  \draw[rotate=60] ({\i*\length/4-\length/16},-3) -- ++(0, 6);
+}
+\foreach \i in {-1,...,1} {
+  \draw[<->, rotate=60] ({\i*\length/4-\length/16+\epsilon},-2.5) -- node[below right] {$\lambda$} ++(\length/4-2*\epsilon, 0);
+}
+
+\draw ({-\length/2},\radius) 
+  sin ++ ({\length/8},0.5*\amplitude) cos ++ ({\length/8},-0.5*\amplitude) sin ++ ({\length/8},-0.5*\amplitude) cos ++ ({\length/8},0.5*\amplitude)
+  sin ++ ({\length/8},0.5*\amplitude) cos ++ ({\length/8},-0.5*\amplitude) sin ++ ({\length/8},-0.5*\amplitude) cos ++ ({\length/8},0.5*\amplitude)
+  ;
+\draw ({-\length/2},-\radius) 
+  sin ++ ({\length/8},-0.5*\amplitude) cos ++ ({\length/8},0.5*\amplitude) sin ++ ({\length/8},0.5*\amplitude) cos ++ ({\length/8},-0.5*\amplitude)
+  sin ++ ({\length/8},-0.5*\amplitude) cos ++ ({\length/8},0.5*\amplitude) sin ++ ({\length/8},0.5*\amplitude) cos ++ ({\length/8},-0.5*\amplitude)
+  ;
+\end{scope}
+
