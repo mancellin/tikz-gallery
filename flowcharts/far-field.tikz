@@ -1,0 +1,25 @@
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+
+\tikzset{
+  % >=latex,
+  % node distance=1cm and 3cm,
+  base/.style={align=center, minimum height=1cm, text width=2cm},
+  process/.style={base, rectangle, draw=black, very thick},
+  io/.style={base, draw=white, text width=1.5cm},
+}
+
+\node[io]                          (geo)    {\footnotesize Geometry and dofs};
+\node[io, above=0.5cm of geo]      (mat)    {\footnotesize Material properties};
+\node[process, right=1cm of geo]   (bem)    {\small BEM};
+\node[process, right=3cm of bem]   (pfd)    {\small Newton's law};
+\node[process, below=0.5cm of pfd] (opt)    {\small Optimization algo.};
+\node[io, right=1cm of pfd]        (pow)    {\small Power};
+\node[io, right=1cm of opt]        (optpow) {\small Optimal power};
+
+\draw[->] (geo.east) -- (bem.west);;
+\draw[->] (bem.east) -- node[above] {\footnotesize $A(\omega)$, $B(\omega)$, $F_e(\omega)$} (pfd.west);
+\draw[<-] (pfd.north) -- ++(0, 1.0cm) -- (mat.east);
+\draw[->] (bem.east) -- ++(0.5cm, 0) -- ++(0, -1.5cm) -- node[above] {\footnotesize $H(\theta, \omega)$} (opt.west);;
+\draw[->] (pfd.east) -- (pow.west);;
+\draw[->] (opt.east) -- (optpow.west);;
