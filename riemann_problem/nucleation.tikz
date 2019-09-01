@@ -1,0 +1,27 @@
+\definecolor{bleu1}{rgb}{0.090196, 0.670588, 0.807843}
+\definecolor{bleu4}{rgb}{0.011765, 0.082353, 0.309804}
+
+% Species
+\draw[bleu1, fill=bleu1] (0,0) -- (0:0.7) arc (0:75:0.7) -- (0,0);
+\node[bleu1] at (40:0.9) {Gas};
+\draw[bleu4, fill=bleu4] (0,0) -- (75:0.7) arc (75:115:0.7) -- (0,0);
+\node[bleu4] at (95:0.9) {Liquid};
+\draw[bleu1, fill=bleu1] (0,0) -- (-0.7,0) arc (0:-65:-0.7) -- (0,0);
+\node[bleu1] at (140:0.9) {Gas};
+\draw[white, fill=white] (0.6, 0.0) arc (0:180:0.6);
+
+% Waves
+\draw (0,0) -- (12:1);
+\draw (0,0) -- (16:1);
+\draw (0,0) -- (20:1);
+\draw (0,0) -- (24:1);
+\draw[red] (0,0) -- (75:0.9) node[right] {\small Interface};
+\draw[dashed] (0,0) --(95:0.8);
+\draw[red] (0,0) -- (115:0.9) node[left] {\small Interface};
+\draw (0,0) -- (170:1);
+\draw (0,0) -- (166:1);
+\draw (0,0) -- (162:1);
+\draw (0,0) -- (158:1);
+
+% Axe
+\draw[ultra thick, -latex] (-1.1, 0) -- (1.1, 0) node[right] {$x$};

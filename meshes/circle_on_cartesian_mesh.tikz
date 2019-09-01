@@ -1,0 +1,14 @@
+\draw[red] (1,0) arc (0:90:1);
+\fill[blue!30!white] (0,0) -- (1,0) arc (0:90:1) -- cycle;
+\fill[blue!70!white] (1.1,1.1) -- (1.1,0) -- (1,0) arc (0:90:1) --  (0, 1.1) -- cycle;
+\draw[white, step=0.05] (0,0) grid (1.1,1.1);
+
+\pgfmathsetmacro{\mesh}{20};
+\foreach \i in {0, 1, ..., 90}
+{
+  \draw[red, thick]
+  ({round(\mesh*cos(\i))/\mesh}, {round(\mesh*sin(\i))/\mesh})
+  |-
+  ({round(\mesh*cos(\i+1))/\mesh}, {round(\mesh*sin(\i+1))/\mesh})
+  ;
+};

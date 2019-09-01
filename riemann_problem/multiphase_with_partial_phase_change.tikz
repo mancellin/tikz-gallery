@@ -1,0 +1,22 @@
+\definecolor{bleu1}{rgb}{0.090196, 0.670588, 0.807843}
+\definecolor{bleu4}{rgb}{0.011765, 0.082353, 0.309804}
+
+% Species
+\fill[bleu1] (0,0) -- (0.7,0) arc (0:60:0.7) -- (0,0);
+\node[bleu1] at (40:0.9) {Gas};
+\fill[bleu1!60!bleu4] (0,0) -- (60:0.7) arc (60:100:0.7) -- (0,0);
+\node[bleu1!60!bleu4] at (80:0.9) {Mixture};
+\fill[bleu4] (0,0) -- (-0.7,0) arc (0:-80:-0.7) -- (0,0);
+\node[bleu4] at (140:0.9) {Liquid};
+\fill[white] (0.6, 0.0) arc (0:180:0.6);
+% Ondes
+\draw (0,0) -- (10:1);
+\draw (0,0) -- (14:1) node[right] {$u+c$};
+\draw (0,0) -- (18:1);
+\draw (0,0) -- (22:1);
+\draw[red] (0,0) -- (60:1) node[right] {\small Reaction front};
+\draw[dashed] (0,0) --(100:1);% node[left] {\small Contact discontinuity};
+\draw (0,0) --(165:1) node[left] {$u-c$};
+% Axe
+\draw[ultra thick, -latex] (-1.1, 0) -- (1.1, 0);
+\node[] at (1.2, 0) {$x$};

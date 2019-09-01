@@ -1,0 +1,30 @@
+% Points
+\coordinate (O) at (-0.5, 0.2);
+\coordinate (O') at (2.2, 0.1);
+\coordinate (O") at (2.0, -0.3);
+\coordinate (A) at (-1.2, 1.0);
+\coordinate (B) at (1.0, 1.2);
+\coordinate (C) at (3.0, 0.9);
+\coordinate (D) at (3.1, -1.2);
+\coordinate (E) at (0.9, -1.0);
+\coordinate (F) at (-1.0, -1.2);
+% Sous-mailles
+\fill[blue!10!white] (O) -- (B) -- (E) -- cycle;
+\draw[dashed, blue] (O) -- (A);
+\draw[dashed, blue] (O) -- (B);
+\draw[dashed, blue] (O) -- (E);
+\draw[dashed, blue] (O) -- (F);
+\draw[dashed, blue] (O') -- (B);
+\draw[dashed, blue] (O') -- (C);
+\draw[dashed, blue] (O') -- (O");
+\draw[dashed, blue] (O") -- (D);
+\draw[dashed, blue] (O") -- (E);
+% Mailles
+\draw[red]
+  (A)
+  -- node[midway, below, red] {Maille $K$} (B)
+  -- node[midway, left, blue] {Sous-maille $K_L$} (E)
+  -- (F) -- cycle;
+\draw[red] (B)
+  -- node[midway, below, red] {Maille $L$} (C)
+  -- (D) -- (E) -- cycle;

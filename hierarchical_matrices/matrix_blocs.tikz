@@ -1,0 +1,59 @@
+\definecolor{ucd_blue}{rgb}{0.0, 0.568, 0.788} % Pantone Process 255-2 / Process Blue
+\definecolor{ucd_navy}{rgb}{0.058, 0.168, 0.356} % Pantone Process 206-1 / 654
+\definecolor{ucd_gold}{rgb}{0.976, 0.839, 0.086} % Pantone Process 6-4 / 109
+\definecolor{ucd_right_green}{rgb}{0.0, 0.529, 0.317} % Pantone Process 275-1 / 348
+\definecolor{ucd_bright_green}{rgb}{0.627, 0.858, 0.556} % Pantone Process 290-1 / 369
+
+\begin{scope}[x=0.4cm, y=0.4cm]
+ % Two random meshes
+ % based on https://tex.stackexchange.com/questions/260610/drawing-unstructured-grids-with-tikz
+ \foreach \i [evaluate={\ii=int(\i-1);}] in {0,...,3}{
+   \foreach \j [evaluate={\jj=int(\j-1);}] in {0,...,3}{
+     \coordinate [shift={(1.5-\i,1.5-\j)}] (n-\i-\j) at (rand*180:1/4+rnd/16);
+     \ifnum\i>0
+       \draw[] (n-\i-\j) -- (n-\ii-\j);
+     \fi
+     \ifnum\j>0
+       \draw[] (n-\i-\j) -- (n-\i-\jj);
+     \fi
+ }}
+
+ \foreach \i [evaluate={\ii=int(\i-1);}] in {0,...,2}{
+   \foreach \j [evaluate={\jj=int(\j-1);}] in {0,...,2}{
+     \coordinate [shift={(6.5+\i,1-\j)}] (n-\i-\j) at (rand*180:1/4+rnd/16);
+     \ifnum\i>0
+       \draw[] (n-\i-\j) -- (n-\ii-\j);
+     \fi
+     \ifnum\j>0
+       \draw[] (n-\i-\j) -- (n-\i-\jj);
+     \fi
+ }}
+
+ % Arrow
+ \draw[<->, line width=1pt, ucd_right_green] (0, -2.5) ++(140:1) arc (-220:40:1);
+ \draw[<->, line width=1pt, ucd_bright_green] (7.5, -2.5) ++(140:1) arc (-220:40:1);
+ \draw[->, line width=1pt, ucd_navy] (2.0, 0.3) -- ++(4.0, 0);
+ \draw[<-, line width=1pt, ucd_blue] (2.0, -0.3) -- ++(4.0, 0);
+
+ % Legend
+ \node[anchor=south] at (0, 1.5) {$I$};
+ \node[anchor=south] at (7.5, 1.5) {$J$};
+\end{scope}
+
+\begin{scope}[x=0.1cm, y=0.1cm, yscale=-1, xshift=5cm, yshift=-1.5cm]
+ % Color patches
+ \fill[ucd_right_green] (5, 5) rectangle +(9, 9);
+ \fill[ucd_bright_green] (20, 20) rectangle +(4, 4);
+ \fill[ucd_navy] (20, 5) rectangle +(4, 9);
+ \fill[ucd_blue] (5, 20) rectangle +(9, 4);
+
+ % Grid
+ \draw[step=1, gray] (0, 0) grid (30, 30);
+
+ % Legend
+ \node[anchor=south] at (9.5, 0) {$I$};
+ \node[anchor=south] at (22, 0) {$J$};
+ \node[anchor=east] at (0, 9.5) {$I$};
+ \node[anchor=east] at (0, 22) {$J$};
+ \node[anchor=north] at (15, 30) {Influence matrix};
+\end{scope}
