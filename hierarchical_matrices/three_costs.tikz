@@ -1,0 +1,13 @@
+\node[anchor=center, align=center] at (0, 3.3) {\emph{Performance costs}};
+\node[draw, anchor=center, text width=3.5cm, align=center] at (0, 2.5) {Computation\\of the matrices};
+\node[draw, anchor=center, text width=3.5cm, align=center] at (0, 1.5) {Storage\\of the matrices};
+\node[draw, anchor=center, text width=3.5cm, align=center] at (0, 0.5) {Resolution\\of the linear system};
+
+\fill[left color=blue, right color=white] (2, 0) rectangle ++(0.5, 3);
+\node[anchor=west, align=left, color=blue] at (2.5, 1.5) {Matrix compression\\techniques};
+
+\fill[left color=red, right color=white] (2.5, 0) rectangle ++(0.5, 1);
+\node[anchor=west, align=left, color=red] at (3, 0.5) {Iterative solvers\\and preconditionning};
+
+\fill[left color=green!50!black, right color=white] (2.5, 2) rectangle ++(0.5, 1);
+\node[anchor=west, align=left, color=green!50!black] at (3, 2.5) {Evaluation\\of the Green function};
