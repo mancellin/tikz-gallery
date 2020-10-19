@@ -20,7 +20,7 @@ cat <<EOF >> "$TMP_DIR/source.tex"
 EOF
 
 # COMPILATION
-latexmk -aux-directory=$TMP_DIR -output-directory=$TMP_DIR "$TMP_DIR/source.tex"
+latexmk -pdf -aux-directory=$TMP_DIR -output-directory=$TMP_DIR "$TMP_DIR/source.tex"
 
 # DISPLAY
 zathura "$TMP_DIR/source.pdf"
