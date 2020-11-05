@@ -1,0 +1,42 @@
+\pgfmathsetmacro{\radius}{0.5}
+\pgfmathsetmacro{\length}{10.0}
+\pgfmathsetmacro{\depth}{-1.2}
+\pgfmathsetmacro{\amplitude}{0.15}
+
+% FREE SURFACE
+\draw (-3*\length/4, 0) 
+  sin ++ ({\length/4}, 1.5*\amplitude)
+  cos ++ ({\length/4},-1.5*\amplitude)
+  sin ++ ({\length/4},-1.5*\amplitude)
+  cos ++ ({\length/4}, 1.5*\amplitude)
+  sin ++ ({\length/4}, 1.5*\amplitude)
+  cos ++ ({\length/4},-1.5*\amplitude)
+  ;
+
+\draw[thick, ->, >=latex] (0, 0) -- ++(0.8, 0) node[above] {$x$};
+\draw[thick, ->, >=latex] (0, 0) -- ++(0, 0.8) node[above] {$z$};
+
+% Section
+\draw[densely dashed] (-\length/4, \depth) circle ({0.5*\radius} and {(1 + \amplitude)*\radius});
+\node[below] at (-\length/4, \depth - \radius) {$S(x, t)$};
+
+% SIDE OF THE CYLINDER
+\draw (-\length/2, \depth) circle ({0.5*\radius} and {\radius});  % Left circle
+\draw[densely dashed] (\length/2,\depth+\radius) arc (90:270:{0.5*\radius} and {\radius});  % Back of right circle
+\draw (\length/2,\depth-\radius) arc (-90:90:{0.5*\radius} and {\radius});  % Front of right circle
+
+\draw (-\length/2,\depth+\radius) 
+  sin ++ ({\length/4},0.5*\amplitude) cos ++ ({\length/4},-0.5*\amplitude) sin ++ ({\length/4},-0.5*\amplitude) cos ++ ({\length/4},0.5*\amplitude);  % Top side
+\draw (-\length/2,\depth-\radius) 
+  sin ++ ({\length/4},-0.5*\amplitude) cos ++ ({\length/4},0.5*\amplitude) sin ++ ({\length/4},0.5*\amplitude) cos ++ ({\length/4},-0.5*\amplitude);  % Bottom side
+
+% % Radius
+% \draw[<->, >=latex] (-\length/2 - 0.5, \depth-\radius) -- node[left] {$2 r_S$} ++ (0.0, 2*\radius);
+
+% Coordinates
+\draw[dotted] (-3*\length/4 - 0.3, 0) -- ++ (6*\length/4 + 0.6, 0) node[right] {$z = 0$};
+\draw[dotted] (-\length/2 - 0.3, \depth) -- ++ (\length + 0.8, 0) node[right] {$z = z_S$};
+
+\draw[dotted] (-\length/2, 0) -- ++ (0, \depth-\radius-0.6) node[below] {$x = -L/2$};
+\draw[dotted] (0, 0) -- ++ (0, \depth-\radius-0.6) node[below] {$x = 0$};
+\draw[dotted] (\length/2, 0) -- ++ (0, \depth-\radius-0.6) node[below] {$x = L/2$};
